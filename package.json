@@ -1,0 +1,30 @@
+{
+  "name": "tuim-my-skills",
+  "version": "0.1.0",
+  "description": "Skill catalog for npx skills add tim/tuim-my-skills.",
+  "private": true,
+  "license": "MIT",
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tim/tuim-my-skills.git"
+  },
+  "homepage": "https://github.com/tim/tuim-my-skills",
+  "keywords": [
+    "skills",
+    "agent-skills",
+    "claude-code",
+    "catalog"
+  ],
+  "bin": {
+    "my-skills": "./bin/my-skills.js"
+  },
+  "scripts": {
+    "list": "node ./bin/my-skills.js list",
+    "validate": "node ./bin/my-skills.js validate",
+    "pack": "node ./bin/my-skills.js pack"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

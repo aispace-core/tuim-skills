@@ -1,0 +1,19 @@
+{
+  "repoName": "tuim-my-skills",
+  "displayName": "My Skills",
+  "publicRepository": "tim/tuim-my-skills",
+  "skillsDirectory": "skills",
+  "ignoreDirectories": [
+    ".git",
+    ".github",
+    "node_modules",
+    "dist",
+    "bin",
+    "lib",
+    "scripts"
+  ],
+  "archiveFormat": "zip",
+  "mpmPublish": {
+    "manifestPath": "dist/manifest.json"
+  }
+}
