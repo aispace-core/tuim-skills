@@ -1,7 +1,7 @@
 {
-  "repoName": "tuim-my-skills",
+  "repoName": "tuim-skills",
   "displayName": "My Skills",
-  "publicRepository": "tim/tuim-my-skills",
+  "publicRepository": "aispace-core/tuim-skills",
   "skillsDirectory": "skills",
   "ignoreDirectories": [
     ".git",

@@ -1,15 +1,15 @@
 {
-  "name": "tuim-my-skills",
+  "name": "tuim-skills",
   "version": "0.1.0",
-  "description": "Skill catalog for npx skills add tim/tuim-my-skills.",
+  "description": "Skill catalog for npx skills add aispace-core/tuim-skills.",
   "private": true,
   "license": "MIT",
   "type": "commonjs",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tim/tuim-my-skills.git"
+    "url": "https://github.com/aispace-core/tuim-skills.git"
   },
-  "homepage": "https://github.com/tim/tuim-my-skills",
+  "homepage": "https://github.com/aispace-core/tuim-skills",
   "keywords": [
     "skills",
     "agent-skills",

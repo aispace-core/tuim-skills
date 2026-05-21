@@ -5,19 +5,19 @@
 安装全部技能：
 
 ```bash
-npx skills add tim/tuim-my-skills
+npx skills add aispace-core/tuim-skills
 ```
 
 安装单个技能：
 
 ```bash
-npx skills add tim/tuim-my-skills -s clone-skill
+npx skills add aispace-core/tuim-skills -s clone-skill
 ```
 
 列出可安装技能：
 
 ```bash
-npx skills add tim/tuim-my-skills --list
+npx skills add aispace-core/tuim-skills --list
 ```
 
 ## 当前可安装技能
