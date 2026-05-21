@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang='zh-CN'>
+<head>
+<meta charset='utf-8'>
+<title>${TITLE} · Presenter Mode</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;background:#0d0d0d;color:#f8f8f8;height:100vh;overflow:hidden}
+.wrap{display:grid;grid-template-columns:1fr 340px;height:100vh;gap:16px;padding:16px}
+iframe{width:100%;height:100%;border:0;border-radius:12px;background:white;transition:transform .2s}
+iframe.shrink{transform:scale(0.95);transform-origin:top left}
+.side{display:flex;flex-direction:column;gap:12px;overflow:hidden}
+.panel{background:#1b1b1b;border:1px solid #333;border-radius:12px;padding:14px;flex:1;overflow:auto;transition:opacity .3s}
+.panel.hidden-panel{display:none}
+.panel h3{font-size:12px;color:#888;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em;display:flex;align-items:center;gap:8px}
+.panel h3 .badge{background:#8b1e1e;color:#fff;font-size:10px;padding:2px 6px;border-radius:4px}
+.note{font-size:14px;line-height:1.6}
+.note b{color:#fff;display:block;margin-bottom:8px;font-size:15px}
+.note hr{border:none;border-top:1px solid #333;margin:12px 0}
+.note .duration{color:#d7b56d;font-size:12px;display:block;margin-top:8px}
+.note .slide-list{margin-top:12px;display:flex;flex-wrap:wrap;gap:4px}
+.note .slide-chip{display:inline-block;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;background:#2a2a2a;color:#888;transition:all .2s}
+.note .slide-chip:hover{background:#3a3a3a;color:#fff}
+.note .slide-chip.current{background:#8b1e1e;color:#fff}
+.controls{display:flex;flex-direction:column;gap:12px;flex-shrink:0}
+.controls-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+button{background:#2a2a2a;border:1px solid #3a3a3a;border-radius:8px;color:#fff;padding:8px 14px;font-size:13px;cursor:pointer;transition:all .2s}
+button:hover{background:#3a3a3a;border-color:#4a4a4a}
+button.active{background:#8b1e1e;border-color:#8b1e1e}
+button.danger{background:#4a1a1a;border-color:#6a2a2a}
+button.danger:hover{background:#5a2a2a}
+#timer{font-size:28px;font-weight:700;margin:0 12px;min-width:80px;text-align:center}
+#timer.warning{color:#f59e0b}
+#timer.danger{color:#ef4444;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.progress-bar{height:8px;background:#2a2a2a;border-radius:4px;cursor:pointer;position:relative;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#8b1e1e,#d7b56d);border-radius:4px;transition:width .3s}
+.progress-bar:hover .progress-fill{background:linear-gradient(90deg,#a52a2a,#e5c87d)}
+.progress-thumb{position:absolute;top:50%;transform:translate(-50%,-50%);width:14px;height:14px;background:#fff;border-radius:50%;opacity:0;transition:opacity .2s;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.progress-bar:hover .progress-thumb{opacity:1}
+.shortcuts{font-size:11px;color:#555;margin-top:8px;line-height:1.8}
+.shortcuts kbd{background:#2a2a2a;padding:2px 6px;border-radius:4px;margin-right:4px;font-size:10px}
+.shortcuts kbd.active{background:#8b1e1e}
+.alerts{margin-top:12px;padding-top:12px;border-top:1px solid #333}
+.alert-item{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:12px}
+.alert-item input{width:60px;padding:4px 8px;border-radius:4px;border:1px solid #3a3a3a;background:#2a2a2a;color:#fff;font-size:12px}
+.alert-item input.warning{color:#f59e0b}
+.alert-item input.danger{color:#ef4444}
+.alert-item .status{width:16px;text-align:center}
+.compare-view{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);z-index:1000;padding:20px}
+.compare-view.active{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding-top:50px}
+.compare-view .close-btn{position:absolute;top:10px;right:20px;background:#333;padding:8px 16px}
+.compare-view iframe{height:calc(100vh - 80px);border-radius:8px}
+.laser-dot{position:fixed;width:20px;height:20px;background:radial-gradient(circle,rgba(255,0,0,.8) 0%,transparent 70%);border-radius:50%;pointer-events:none;z-index:9999;opacity:0;transition:opacity .1s}
+.laser-dot.active{opacity:1}
+</style>
+</head>
+<body>
+<div class='wrap'>
+  <div id='deckContainer'>
+    <iframe id='current' src='${DECK_SRC}'></iframe>
+  </div>
+  <div class='side'>
+    <div class='panel' id='notesPanel'>
+      <h3>📝 演讲者备注 <span class='badge' id='slideCount'>1/5</span></h3>
+      <div id='note' class='note'></div>
+      <div class='slide-list' id='slideList'></div>
+    </div>
+    <div class='panel' id='controlsPanel'>
+      <h3>🎮 控制面板</h3>
+      <div class='controls'>
+        <div class='controls-row'>
+          <button onclick='go(-1)'>◀</button>
+          <button onclick='go(1)'>▶</button>
+          <span id='timer'>00:00</span>
+        </div>
+        <div class='controls-row'>
+          <button onclick='toggleTimer()' id='timerBtn'>⏸</button>
+          <button onclick='resetTimer()' title='重置计时器'>↺</button>
+          <button onclick='toggleFullscreen()' id='fsBtn'>⛶</button>
+          <button onclick='toggleLaser()' id='laserBtn' title='激光笔'>🔴</button>
+        </div>
+        <div class='controls-row'>
+          <button onclick='toggleNotes()' id='notesBtn'>📝</button>
+          <button onclick='showCompare()'>🎨对比</button>
+          <button onclick='go(0)' title='第一页'>⏮</button>
+          <button onclick='go(notes.length-1)' title='最后一页'>⏭</button>
+        </div>
+      </div>
+      <div class='progress-bar' id='progressBar' onclick='seekTo(event)'>
+        <div class='progress-fill' id='progress'></div>
+        <div class='progress-thumb' id='thumb'></div>
+      </div>
+      <div class='alerts'>
+        <div class='alert-item'>
+          <span class='status' id='alertWarning'>⚠️</span>
+          <input type='number' id='warnTime' value='5' min='1' max='60' onclick='event.stopPropagation()'>
+          <span>分钟警告</span>
+          <button onclick='clearAlert("warning")' style='padding:4px 8px;font-size:11px'>✕</button>
+        </div>
+        <div class='alert-item'>
+          <span class='status' id='alertDanger'>🚨</span>
+          <input type='number' id='dangerTime' value='1' min='1' max='30' onclick='event.stopPropagation()'>
+          <span>分钟结束</span>
+          <button onclick='clearAlert("danger")' style='padding:4px 8px;font-size:11px'>✕</button>
+        </div>
+      </div>
+      <div class='shortcuts'>
+        <kbd id='k-left'>←</kbd><kbd id='k-right'>→</kbd> 翻页
+        <kbd id='k-f'>F</kbd> 全屏
+        <kbd id='k-t'>T</kbd> 暂停
+        <kbd id='k-l'>L</kbd> 激光笔
+        <kbd id='k-n'>N</kbd> 隐藏备注
+        <kbd id='k-c'>C</kbd> 风格对比
+      </div>
+    </div>
+  </div>
+</div>
+<div class='compare-view' id='compareView'>
+  <button class='close-btn' onclick='hideCompare()'>✕ 关闭对比</button>
+  ${COMPARE_IFRAMES}
+</div>
+<div class='laser-dot' id='laserDot'></div>
+<script>
+const notes=${NOTES_JSON};
+let i=0,t=Date.now(),paused=false,elapsed=0;
+let notesVisible=true,laserActive=false;
+let alerted={warning:false,danger:false};
+function sync(){
+  const note=notes[i];
+  document.getElementById('current').src='${DECK_SRC}?slide='+i;
+  document.getElementById('progress').style.width=((i+1)/notes.length*100)+'%';
+  document.getElementById('thumb').style.left=((i+1)/notes.length*100)+'%';
+  document.getElementById('slideCount').textContent=(i+1)+'/'+notes.length;
+  document.getElementById('note').innerHTML=
+    '<b>'+note.slide_id+' '+note.role_label+'</b>'+
+    '<div>'+note.note+'</div>'+
+    '<hr>'+
+    '<div>'+note.say+'</div>'+
+    '<span class="duration">⏱ '+note.duration_seconds+'s · '+note.visual_directive+'</span>';
+  renderSlideList();
+}
+function renderSlideList(){
+  const list=document.getElementById('slideList');
+  list.innerHTML=notes.map((n,idx)=>
+    '<span class="slide-chip'+(idx===i?' current':'')+'" onclick="go('+idx+')">'+n.slide_id+'</span>'
+  ).join('');
+}
+function go(n){i=Math.max(0,Math.min(notes.length-1,n));sync()}
+function seekTo(e){
+  const bar=document.getElementById('progressBar');
+  const rect=bar.getBoundingClientRect();
+  const pct=(e.clientX-rect.left)/rect.width;
+  go(Math.floor(pct*notes.length));
+}
+function toggleTimer(){
+  if(paused){t=Date.now()-elapsed;paused=false;document.getElementById('timerBtn').textContent='⏸';document.getElementById('k-t').classList.remove('active');}
+  else{elapsed=Date.now()-t;paused=true;document.getElementById('timerBtn').textContent='▶';document.getElementById('k-t').classList.add('active');}
+}
+function resetTimer(){t=Date.now();elapsed=0;alerted={warning:false,danger:false};document.getElementById('timer').className=''}
+function toggleFullscreen(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen();document.getElementById('fsBtn').classList.add('active');document.getElementById('k-f').classList.add('active');}
+  else{document.exitFullscreen();document.getElementById('fsBtn').classList.remove('active');document.getElementById('k-f').classList.remove('active');}
+}
+function toggleNotes(){
+  notesVisible=!notesVisible;
+  document.getElementById('notesPanel').classList.toggle('hidden-panel',!notesVisible);
+  document.getElementById('notesBtn').classList.toggle('active',!notesVisible);
+  document.getElementById('k-n').classList.toggle('active',!notesVisible);
+}
+function toggleLaser(){
+  laserActive=!laserActive;
+  document.getElementById('laserBtn').classList.toggle('active',laserActive);
+  document.getElementById('k-l').classList.toggle('active',laserActive);
+  document.getElementById('laserDot').classList.toggle('active',laserActive);
+}
+function showCompare(){
+  document.getElementById('compareView').classList.add('active');
+  document.getElementById('k-c').classList.add('active');
+  syncCompareFrames();
+}
+function hideCompare(){
+  document.getElementById('compareView').classList.remove('active');
+  document.getElementById('k-c').classList.remove('active');
+}
+function syncCompareFrames(){
+  document.querySelectorAll('#compareView iframe').forEach(iframe=>{
+    iframe.src='${STYLE_BASE}?slide='+i;
+  });
+}
+function clearAlert(type){alerted[type]=false;document.getElementById('timer').classList.remove(type==='warning'?'warning':'danger');}
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();go(i+1);}
+  if(e.key==='ArrowLeft'){e.preventDefault();go(i-1);}
+  if(e.key==='f'||e.key==='F')toggleFullscreen();
+  if(e.key==='t'||e.key==='T')toggleTimer();
+  if(e.key==='l'||e.key==='L')toggleLaser();
+  if(e.key==='n'||e.key==='N')toggleNotes();
+  if(e.key==='c'||e.key==='C'){
+    const cv=document.getElementById('compareView');
+    cv.classList.contains('active')?hideCompare():showCompare();
+  }
+});
+document.addEventListener('mousemove',e=>{
+  if(laserActive){
+    const dot=document.getElementById('laserDot');
+    dot.style.left=(e.clientX-10)+'px';
+    dot.style.top=(e.clientY-10)+'px';
+  }
+});
+setInterval(()=>{
+  if(!paused){
+    let s=Math.floor((Date.now()-t)/1000);
+    let m=Math.floor(s/60);
+    document.getElementById('timer').textContent=String(m).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+    const warnVal=parseInt(document.getElementById('warnTime').value)||5;
+    const dangerVal=parseInt(document.getElementById('dangerTime').value)||1;
+    if(m>=warnVal&&!alerted.warning){
+      alerted.warning=true;
+      document.getElementById('timer').classList.add('warning');
+      document.getElementById('alertWarning').textContent='✅';
+    }
+    if(m>=dangerVal&&!alerted.danger){
+      alerted.danger=true;
+      document.getElementById('timer').classList.add('danger');
+      document.getElementById('alertDanger').textContent='🔴';
+    }
+  }
+},500);
+sync();
+</script>
+</body>
+</html>

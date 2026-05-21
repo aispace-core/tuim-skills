@@ -1,0 +1,41 @@
+{
+  "owner": {
+    "name": "tuim",
+    "email": "tuim@example.com"
+  },
+  "name": "tuim-skills",
+  "version": "1.0.0",
+  "description": "A collection of AI workflow skills including clone-skill, roundtable, startup ideas, PPT generation and more.",
+  "plugins": [
+    {
+      "name": "clone-skill",
+      "source": "aispace-core/tuim-skills",
+      "path": "plugins/clone-skill"
+    },
+    {
+      "name": "my-design-video-gen",
+      "source": "aispace-core/tuim-skills",
+      "path": "plugins/my-design-video-gen"
+    },
+    {
+      "name": "my-roundtable",
+      "source": "aispace-core/tuim-skills",
+      "path": "plugins/my-roundtable"
+    },
+    {
+      "name": "my-startup-idea",
+      "source": "aispace-core/tuim-skills",
+      "path": "plugins/my-startup-idea"
+    },
+    {
+      "name": "normal-ppt",
+      "source": "aispace-core/tuim-skills",
+      "path": "plugins/normal-ppt"
+    },
+    {
+      "name": "stock-roundtable",
+      "source": "aispace-core/tuim-skills",
+      "path": "plugins/stock-roundtable"
+    }
+  ]
+}

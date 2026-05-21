@@ -1,0 +1,197 @@
+# AST Templates Registry
+# 定义不同场景下的 AST 角色模板
+
+templates:
+  # 默认模板 - 通用演示
+  default:
+    label: "通用演示"
+    description: "适合一般性的演示场景，5 步叙事结构"
+    roles:
+      - id: hook
+        label: "Hook / 钩子"
+        purpose: "抓住注意力，建立悬念"
+        default_duration: 30
+        visual_directive: "大字标题 + 冲击力背景"
+      - id: conflict
+        label: "Conflict / 冲突"
+        purpose: "打破旧认知，制造张力"
+        default_duration: 45
+        visual_directive: "对比/反直觉展示"
+      - id: method
+        label: "Method / 方法"
+        purpose: "解释新框架或方法"
+        default_duration: 90
+        visual_directive: "流程图/框架图"
+      - id: proof
+        label: "Proof / 证据"
+        purpose: "用证据建立信任"
+        default_duration: 60
+        visual_directive: "数据/案例展示"
+      - id: takeaway
+        label: "Takeaway / 结论"
+        purpose: "留下可带走的关键判断"
+        default_duration: 30
+        visual_directive: "简洁金句 + 行动号召"
+    default_style: guizang-stable
+
+  # 工作坊场景
+  workshop:
+    label: "工作坊 / Workshop"
+    description: "适合动手实践的工作坊，包含练习环节"
+    roles:
+      - id: hook
+        label: "开场破冰"
+        purpose: "建立参与感，降低门槛"
+        default_duration: 20
+        visual_directive: "互动问题 + 现场演示"
+      - id: context
+        label: "背景铺垫"
+        purpose: "快速对齐认知基线"
+        default_duration: 30
+        visual_directive: "概念图/时间线"
+      - id: demo
+        label: "现场演示"
+        purpose: "展示完整流程"
+        default_duration: 120
+        visual_directive: "步骤分解 + 截图"
+      - id: exercise
+        label: "动手练习"
+        purpose: "让观众实践，发现问题"
+        default_duration: 180
+        visual_directive: "练习指引 + 检查清单"
+      - id: takeaway
+        label: "总结复盘"
+        purpose: "巩固学习，布置后续"
+        default_duration: 30
+        visual_directive: "关键收获 + 资源链接"
+    default_style: guizang-stable
+    includes_qna: true
+
+  # 产品发布
+  product_launch:
+    label: "产品发布"
+    description: "适合新产品、新功能发布"
+    roles:
+      - id: hook
+        label: "产品亮相"
+        purpose: "制造哇时刻"
+        default_duration: 20
+        visual_directive: "产品图/预告"
+      - id: problem
+        label: "痛点揭示"
+        purpose: "让观众感同身受"
+        default_duration: 45
+        visual_directive: "场景故事/用户引言"
+      - id: solution
+        label: "解决方案"
+        purpose: "展示产品如何解决"
+        default_duration: 120
+        visual_directive: "功能演示/对比"
+      - id: proof
+        label: "用户证言"
+        purpose: "第三方信任背书"
+        default_duration: 60
+        visual_directive: "截图/数据/评价"
+      - id: cta
+        label: "行动号召"
+        purpose: "引导立即行动"
+        default_duration: 30
+        visual_directive: "二维码/链接 + 优惠"
+    default_style: zara-editorial
+
+  # 技术分享
+  tech_talk:
+    label: "技术分享"
+    description: "适合技术会议、代码演示"
+    roles:
+      - id: hook
+        label: "问题引入"
+        purpose: "从实际问题出发"
+        default_duration: 30
+        visual_directive: "问题截图/报错信息"
+      - id: background
+        label: "背景知识"
+        purpose: "必要的知识铺垫"
+        default_duration: 60
+        visual_directive: "架构图/流程图"
+      - id: solution
+        label: "核心方案"
+        purpose: "展示技术实现"
+        default_duration: 180
+        visual_directive: "代码 + 注释 + 讲解"
+      - id: demo
+        label: "Live Demo"
+        purpose: "现场演示验证"
+        default_duration: 120
+        visual_directive: "终端/浏览器"
+      - id: takeaway
+        label: "关键总结"
+        purpose: "技术要点回顾"
+        default_duration: 30
+        visual_directive: "要点列表 + 链接"
+    default_style: guizang-stable
+
+  # 培训教育
+  training:
+    label: "培训教育"
+    description: "适合内部培训、课程教学"
+    roles:
+      - id: hook
+        label: "课程目标"
+        purpose: "明确学习收益"
+        default_duration: 15
+        visual_directive: "目标清单"
+      - id: concept
+        label: "概念讲解"
+        purpose: "建立知识框架"
+        default_duration: 90
+        visual_directive: "图解/类比"
+      - id: example
+        label: "案例分析"
+        purpose: "用实例加深理解"
+        default_duration: 90
+        visual_directive: "案例 + 分析"
+      - id: practice
+        label: "随堂练习"
+        purpose: "检验学习效果"
+        default_duration: 120
+        visual_directive: "练习题/测验"
+      - id: qna
+        label: "问答环节"
+        purpose: "答疑解惑"
+        default_duration: 60
+        visual_directive: "问题墙/投票"
+      - id: summary
+        label: "课程总结"
+        purpose: "巩固知识脉络"
+        default_duration: 30
+        visual_directive: "知识图谱/大纲"
+    default_style: guizang-stable
+
+# 场景关键词映射 - 用于自动检测
+scene_keywords:
+  workshop:
+    - 工作坊
+    - workshop
+    - 动手
+    - 练习
+    - 实操
+  product_launch:
+    - 发布
+    - launch
+    - 新品
+    - 新功能
+    - 上市
+  tech_talk:
+    - 技术
+    - tech
+    - 代码
+    - 架构
+    - 源码
+    - demo
+  training:
+    - 培训
+    - 教学
+    - 课程
+    - 学会
+    - 掌握

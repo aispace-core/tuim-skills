@@ -1,0 +1,52 @@
+[
+  {
+    "slide_id": "S01",
+    "role": "hook",
+    "role_label": "问题引入",
+    "title": "AI 工具更新，不只是功能清单",
+    "note": "从实际问题出发",
+    "say": "从实际问题出发",
+    "duration_seconds": 30,
+    "visual_directive": "问题截图/报错信息"
+  },
+  {
+    "slide_id": "S02",
+    "role": "background",
+    "role_label": "背景知识",
+    "title": "必要的知识铺垫",
+    "note": "必要的知识铺垫",
+    "say": "必要的知识铺垫",
+    "duration_seconds": 60,
+    "visual_directive": "架构图/流程图"
+  },
+  {
+    "slide_id": "S03",
+    "role": "solution",
+    "role_label": "核心方案",
+    "title": "展示技术实现",
+    "note": "展示技术实现",
+    "say": "展示技术实现",
+    "duration_seconds": 180,
+    "visual_directive": "代码 + 注释 + 讲解"
+  },
+  {
+    "slide_id": "S04",
+    "role": "demo",
+    "role_label": "Live Demo",
+    "title": "现场演示验证",
+    "note": "现场演示验证",
+    "say": "现场演示验证",
+    "duration_seconds": 120,
+    "visual_directive": "终端/浏览器"
+  },
+  {
+    "slide_id": "S05",
+    "role": "takeaway",
+    "role_label": "关键总结",
+    "title": "技术要点回顾",
+    "note": "技术要点回顾",
+    "say": "技术要点回顾",
+    "duration_seconds": 30,
+    "visual_directive": "要点列表 + 链接"
+  }
+]

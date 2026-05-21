@@ -1,0 +1,122 @@
+[
+  {
+    "slide_id": "S01",
+    "role": "hook",
+    "role_label": "问题引入",
+    "title": "AI 工具更新，不只是功能清单",
+    "message": "从实际问题出发",
+    "purpose": "从实际问题出发",
+    "visible_content": [
+      "从实际问题出发",
+      "- 然后用一个具体例子说明：同样是做 PPT，以前是人先整理大纲，现在可以由 Normal PPT 先做 AST 大纲，再交给下游 Skill 生成页面"
+    ],
+    "speaker_intent": "从实际问题出发",
+    "estimated_duration_seconds": 30,
+    "visual_directive": "问题截图/报错信息",
+    "asset_need": "无",
+    "recommended_style": "guizang-stable",
+    "keywords": [
+      "AI",
+      "PPT",
+      "Normal",
+      "工具更新",
+      "不只是功能清单"
+    ]
+  },
+  {
+    "slide_id": "S02",
+    "role": "background",
+    "role_label": "背景知识",
+    "title": "必要的知识铺垫",
+    "message": "必要的知识铺垫",
+    "purpose": "必要的知识铺垫",
+    "visible_content": [
+      "必要的知识铺垫",
+      "- 最后给出判断：未来会拉开差距的不是谁收藏了更多工具，而是谁能把工具组织成稳定流程"
+    ],
+    "speaker_intent": "必要的知识铺垫",
+    "estimated_duration_seconds": 60,
+    "visual_directive": "架构图/流程图",
+    "asset_need": "无",
+    "recommended_style": "guizang-stable",
+    "keywords": [
+      "AI",
+      "PPT",
+      "Normal",
+      "工具更新",
+      "不只是功能清单"
+    ]
+  },
+  {
+    "slide_id": "S03",
+    "role": "solution",
+    "role_label": "核心方案",
+    "title": "展示技术实现",
+    "message": "展示技术实现",
+    "purpose": "展示技术实现",
+    "visible_content": [
+      "展示技术实现",
+      "但普通用户真正困惑的不是“功能有没有”，而是：这些更新到底会不会改变我的工作流"
+    ],
+    "speaker_intent": "展示技术实现",
+    "estimated_duration_seconds": 180,
+    "visual_directive": "代码 + 注释 + 讲解",
+    "asset_need": "无",
+    "recommended_style": "guizang-stable",
+    "keywords": [
+      "AI",
+      "PPT",
+      "Normal",
+      "工具更新",
+      "不只是功能清单"
+    ]
+  },
+  {
+    "slide_id": "S04",
+    "role": "demo",
+    "role_label": "Live Demo",
+    "title": "现场演示验证",
+    "message": "现场演示验证",
+    "purpose": "现场演示验证",
+    "visible_content": [
+      "现场演示验证",
+      "最近很多 AI 工具都在更新：更长上下文、更强的代码能力、更多 Agent 能力、更漂亮的网页生成"
+    ],
+    "speaker_intent": "现场演示验证",
+    "estimated_duration_seconds": 120,
+    "visual_directive": "终端/浏览器",
+    "asset_need": "截图/流程图",
+    "recommended_style": "guizang-stable",
+    "keywords": [
+      "AI",
+      "PPT",
+      "Normal",
+      "工具更新",
+      "不只是功能清单"
+    ]
+  },
+  {
+    "slide_id": "S05",
+    "role": "takeaway",
+    "role_label": "关键总结",
+    "title": "技术要点回顾",
+    "message": "技术要点回顾",
+    "purpose": "技术要点回顾",
+    "visible_content": [
+      "技术要点回顾",
+      "- 再提出反常识：真正值得关注的不是功能数量，而是工作流入口是否迁移"
+    ],
+    "speaker_intent": "技术要点回顾",
+    "estimated_duration_seconds": 30,
+    "visual_directive": "要点列表 + 链接",
+    "asset_need": "无",
+    "recommended_style": "guizang-stable",
+    "keywords": [
+      "AI",
+      "PPT",
+      "Normal",
+      "工具更新",
+      "不只是功能清单"
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "name": "my-startup-idea",
+  "version": "1.0.0",
+  "description": "创业点子生成器，基于趋势、痛点和市场空白生成可落地的创业想法。",
+  "author": "tuim",
+  "homepage": "https://github.com/aispace-core/tuim-skills",
+  "skills": {
+    "skills": "./skills"
+  }
+}

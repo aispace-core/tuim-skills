@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Normal PPT Slide Plan V2",
+  "version": "2.0.0",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "slide_id",
+      "role",
+      "role_label",
+      "title",
+      "message",
+      "purpose",
+      "speaker_intent"
+    ],
+    "properties": {
+      "slide_id": {
+        "type": "string",
+        "pattern": "^S\\d{2}$",
+        "description": "Slide ID in S01, S02 format"
+      },
+      "role": {
+        "type": "string",
+        "description": "Role identifier (hook, conflict, method, etc.)"
+      },
+      "role_label": {
+        "type": "string",
+        "description": "Human-readable role label in Chinese"
+      },
+      "title": {
+        "type": "string",
+        "description": "Slide title"
+      },
+      "message": {
+        "type": "string",
+        "description": "Core message to convey"
+      },
+      "purpose": {
+        "type": "string",
+        "description": "Narrative purpose of this slide"
+      },
+      "visible_content": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Content visible on the slide"
+      },
+      "speaker_intent": {
+        "type": "string",
+        "description": "What the speaker should do/say"
+      },
+      "estimated_duration_seconds": {
+        "type": "integer",
+        "minimum": 5,
+        "maximum": 600,
+        "default": 60,
+        "description": "Recommended time to spend on this slide"
+      },
+      "visual_directive": {
+        "type": "string",
+        "description": "Visual instruction for renderer (e.g., '大字标题+背景图')"
+      },
+      "asset_need": {
+        "type": "string",
+        "description": "Required assets (screenshot, diagram, etc.)"
+      },
+      "recommended_style": {
+        "type": "string",
+        "description": "Recommended rendering style for this slide"
+      },
+      "alternate_content": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Alternative content options"
+      },
+      "keywords": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Keywords for search and SEO"
+      }
+    }
+  },
+  "metadata": {
+    "template_id": {
+      "type": "string",
+      "description": "AST template used (default, workshop, product_launch, etc.)"
+    },
+    "template_label": {
+      "type": "string",
+      "description": "Human-readable template name"
+    },
+    "content_type": {
+      "type": "string",
+      "enum": ["code", "tutorial", "meeting", "report", null],
+      "description": "Detected content type"
+    },
+    "generated_by": {
+      "type": "string",
+      "default": "normal-ppt-v2"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

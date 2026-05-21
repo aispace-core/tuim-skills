@@ -1,0 +1,45 @@
+# Styles Registry
+# 定义可用的渲染风格
+
+styles:
+  guizang-stable:
+    label: "中文稳定"
+    label_en: "guizang-style"
+    description: "适合中文内容，稳重大气，阅读友好"
+    bg: "#f6f1e8"
+    fg: "#171717"
+    accent: "#8b1e1e"
+    font: "-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif"
+    use_cases:
+      - 中文演讲
+      - 正式场合
+      - 培训教程
+    category: stable
+
+  zara-editorial:
+    label: "风格探索"
+    label_en: "Zara Editorial"
+    description: "高端杂志风格，优雅文艺"
+    bg: "#111111"
+    fg: "#f7f1e8"
+    accent: "#d7b56d"
+    font: "Georgia,'Times New Roman','PingFang SC',serif"
+    use_cases:
+      - 产品发布
+      - 品牌展示
+      - 艺术相关
+    category: editorial
+
+  zara-contrast:
+    label: "风格探索"
+    label_en: "Zara Contrast"
+    description: "强对比风格，现代感强"
+    bg: "#fafafa"
+    fg: "#111111"
+    accent: "#ff4d00"
+    font: "Inter,-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif"
+    use_cases:
+      - 科技产品
+      - 创意展示
+      - 重点突出
+    category: contrast

@@ -1,0 +1,10 @@
+{
+  "name": "my-roundtable",
+  "version": "1.0.0",
+  "description": "把话题组织成有真实冲突的圆桌讨论。自动生成主持人+3-4位立场鲜明的嘉宾，分轮推进交锋与追问，最终输出结构化结论。",
+  "author": "tuim",
+  "homepage": "https://github.com/aispace-core/tuim-skills",
+  "skills": {
+    "skills": "./skills"
+  }
+}
