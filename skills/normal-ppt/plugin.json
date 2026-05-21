@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "基于 AST 理论的人感 PPT 大纲导演 Skill。在从原始素材生成 PPT/HTML 幻灯片之前使用。",
   "author": "tuim",
-  "homepage": "https://github.com/aispace-core/tuim-skills",
   "skills": {
     "skills": "./skills"
   }

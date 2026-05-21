@@ -10,32 +10,32 @@
     {
       "name": "clone-skill",
       "source": "aispace-core/tuim-skills",
-      "path": "plugins/clone-skill"
+      "path": "skills/clone-skill"
     },
     {
       "name": "my-design-video-gen",
       "source": "aispace-core/tuim-skills",
-      "path": "plugins/my-design-video-gen"
+      "path": "skills/my-design-video-gen"
     },
     {
       "name": "my-roundtable",
       "source": "aispace-core/tuim-skills",
-      "path": "plugins/my-roundtable"
+      "path": "skills/my-roundtable"
     },
     {
       "name": "my-startup-idea",
       "source": "aispace-core/tuim-skills",
-      "path": "plugins/my-startup-idea"
+      "path": "skills/my-startup-idea"
     },
     {
       "name": "normal-ppt",
       "source": "aispace-core/tuim-skills",
-      "path": "plugins/normal-ppt"
+      "path": "skills/normal-ppt"
     },
     {
       "name": "stock-roundtable",
       "source": "aispace-core/tuim-skills",
-      "path": "plugins/stock-roundtable"
+      "path": "skills/stock-roundtable"
     }
   ]
 }

@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "股票投资研究型圆桌 skill，适用于股票分析、投资讨论、财报解读、估值分析等请求。强调把辩论过程真实展开，并在讨论过程中实时查询财报、估值、行业、政策、宏观与地缘政治信息。",
   "author": "tuim",
-  "homepage": "https://github.com/aispace-core/tuim-skills",
   "skills": {
     "skills": "./skills"
   }

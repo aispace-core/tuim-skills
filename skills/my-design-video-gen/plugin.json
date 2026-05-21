@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "把一个概念、产品或方案转成适合视频表达的设计化脚本，输出镜头段落、画面节奏、文案结构和视觉提示。",
   "author": "tuim",
-  "homepage": "https://github.com/aispace-core/tuim-skills",
   "skills": {
     "skills": "./skills"
   }

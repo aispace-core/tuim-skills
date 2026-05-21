@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "克隆一个人的思维系统或一个主题的方法论，自动完成分流、调研、提炼、组装、验证。",
   "author": "tuim",
-  "homepage": "https://github.com/aispace-core/tuim-skills",
   "skills": {
     "skills": "./skills"
   }
